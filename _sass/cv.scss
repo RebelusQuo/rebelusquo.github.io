@@ -1,0 +1,131 @@
+@import 'reset';
+@import 'colors';
+@import 'mixins';
+
+$skill-mark-color: black;
+$skill-blank-color: map-get($color-grays, 130);
+
+$primary-heading-size: 24pt;
+$secondary-heading-size: 16pt;
+$trinary-heading-size: 12pt;
+$text-flow-spacing: 6pt;
+
+body {
+  background-color: map-get($color-grays, 30);
+}
+
+.page {
+  margin: 5mm auto 10mm;
+  padding: 10mm 15mm;
+  width: calc(210mm + 2px);
+  height: calc(297mm + 2px);
+  border: 1px black solid;
+  background-color: white;
+  box-shadow: 5px 5px 5px black;
+
+  font: 9pt/1 "Open Sans", sans-serif;
+
+  h1, h2, h3 {
+    font-family: Tinos, serif;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__header {
+    $secondary-heading-size: 10pt;
+    $header-inverse-heading-ratio: $secondary-heading-size/$primary-heading-size;
+    $header-text-size: $secondary-heading-size;
+
+    display: table;
+    width: 470px;
+    margin: ($text-flow-spacing * 10) auto ($text-flow-spacing * 6);
+
+    & h1 {
+      border-top: 1px solid black;
+      padding-top: $header-inverse-heading-ratio * .5em;
+      font-size: $primary-heading-size;
+      line-height: 2em;
+      letter-spacing: .15em;
+      text-align: center;
+    }
+
+    & h2 {
+      margin-bottom: $text-flow-spacing * 3;
+      font-size: $secondary-heading-size;
+      font-weight: normal;
+      @include affix-horizontal-line(2em, center);
+    }
+
+    & p {
+      margin: ($text-flow-spacing * 2) 0;
+      font-size: $header-text-size;
+      line-height: 1.4;
+    }
+
+    & hr {
+      margin-top: $text-flow-spacing * 3;
+      border: none;
+      border-top: 1px solid black;
+    }
+  }
+
+  &__body {
+    line-height: 1.4;
+
+    h2 {
+      margin-top: $text-flow-spacing * 6;
+      margin-bottom: $text-flow-spacing * 2;
+      font-size: $secondary-heading-size;
+      letter-spacing: .15em;
+      @include affix-horizontal-line(1em, left);
+    }
+
+    h3 {
+      margin-top: $text-flow-spacing * 2;
+      font-size: $trinary-heading-size;
+    }
+
+    ol,
+    ul {
+      margin-bottom: $text-flow-spacing;
+    }
+  }
+
+  &__two-columns {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: calc(40% - #{$text-flow-spacing * 2}) auto;
+    grid-template-rows: repeat(3, auto);
+    column-gap: $text-flow-spacing * 4;
+  }
+}
+
+.skill {
+  display: flex;
+
+  %mark {
+    margin: auto .2em;
+    width: 2.9em;
+    height: .5em;
+    border: 1px black solid;
+    &:first-child { margin-left: auto; }
+  }
+  &__mark {
+    @extend %mark;
+    background-color: $skill-mark-color;
+  }
+  &__blank {
+    @extend %mark;
+    background-color: $skill-blank-color;
+  }
+}
+
+.github-logo::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(../assets/GitHub-Mark-32px.png);
+  background-size: cover;
+}

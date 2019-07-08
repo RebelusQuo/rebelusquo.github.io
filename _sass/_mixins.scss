@@ -1,0 +1,34 @@
+@mixin horizontal-line($width) {
+  content: "";
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 1px;
+  width: $width;
+  background-color: black;
+}
+
+@mixin affix-horizontal-line($margin, $align-text) {
+  $line-width: if($align-text == center, 50%, 100%);
+
+  text-align: $align-text;
+  overflow: hidden;
+
+  @if ($align-text == left) {
+    &::after {
+      @include horizontal-line($line-width);
+      margin: 0 -100% 0 $margin;
+    }
+  } @else if ($align-text == right) {
+    &::before {
+      @include horizontal-line($line-width);
+      margin: 0 $margin 0 -100%;
+    }
+  } @else {
+    &::before, &::after {
+      @include horizontal-line($line-width);
+    }
+    &::before { margin: 0 $margin 0 -50%; }
+    &::after { margin: 0 -50% 0 $margin; }
+  }
+}

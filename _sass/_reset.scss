@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body { font: 16px/1 sans-serif; }
+h1, h2, h3, h4 { font-size: inherit; }
+
+main,
+li { display: block; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
