@@ -10,8 +10,16 @@ $secondary-heading-size: 16pt;
 $trinary-heading-size: 12pt;
 $text-flow-spacing: 6pt;
 
+@page {
+  margin: 0;
+}
+
 body {
   background-color: map-get($color-grays, 30);
+
+  @media print {
+    background-color: white;
+  }
 }
 
 .page {
@@ -22,6 +30,14 @@ body {
   border: 1px black solid;
   background-color: white;
   box-shadow: 5px 5px 5px black;
+
+  @media print {
+    margin: 0;
+    width: auto;
+    height: 100%;
+    border-style: none;
+    box-shadow: none;
+  }
 
   font: 9pt/1 "Open Sans", sans-serif;
 
