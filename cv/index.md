@@ -72,7 +72,8 @@ layout: cv
 
 ### SharePoint App Utvecklare
 
-**Cooper Compliance \| California, USA \| 2014-02 - 2017-09**
+**Cooper Compliance \| California, USA \| 2014-02 - 2017-09**\\
+(Distansanställning)
 
 ### Doktorand studier
 
